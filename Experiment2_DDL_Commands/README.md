@@ -92,7 +92,9 @@ CREATE TABLE Table_Name (
 );
 ```
 ### 6. DEFAULT
-Used to insert a default value into a column if no value is specified.
+Create a table named Products with the following columns:
+
+ProductID as INTEGER ProductName as TEXT Price as REAL Stock as INTEGER
 
 Syntax:
 ```sql
@@ -104,124 +106,156 @@ CREATE TABLE Table_Name (
 ```
 
 **Question 1**
---
--- Paste Question 1 here
+```
+CREATE TABLE Products(
+ProductID INTEGER,
+ProductName TEXT,
+Price REAL,
+Stock INTEGER
+);
 
-```sql
--- Paste your SQL code below for Question 1
+
 ```
 
 **Output:**
 
-![Output1](output.png)
+<img width="1266" height="352" alt="image" src="https://github.com/user-attachments/assets/c3c8cb04-750a-4828-a1a9-b6ef8fad99a5" />
+
 
 **Question 2**
----
--- Paste Question 2 here
+Insert all customers from Old_customers into Customers
 
-```sql
--- Paste your SQL code below for Question 2
+Table attributes are CustomerID, Name, Address, Email
+```
+INSERT INTO Customers(CustomerID, Name, Address, Email)
+SELECT CustomerID, Name, Address, Email
+FROM Old_customers
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1262" height="287" alt="image" src="https://github.com/user-attachments/assets/b02e6616-b5fa-4c38-85df-13b3cac3be28" />
 
 **Question 3**
----
--- Paste Question 3 here
+Write a SQL query to Add a new ParentsNumber column as number and Adhar_Number as Number in the Student_details table.
+```
+ALTER TABLE Student_details ADD ParentsNumber number;
+ALTER TABLE Student_details ADD Adhar_Number number;
 
-```sql
--- Paste your SQL code below for Question 3
+
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1257" height="290" alt="image" src="https://github.com/user-attachments/assets/d515cf06-8534-4197-8f8d-5a6b616fb1a1" />
+
 
 **Question 4**
----
--- Paste Question 4 here
-
-```sql
--- Paste your SQL code below for Question 4
+Write a SQL query to Add a new column Country as text in the Student_details table.
+```
+ALTER TABLE Student_details ADD ParentsNumber number;
+ALTER TABLE Student_details ADD Adhar_Number number;
 ```
 
 **Output:**
 
-![Output4](output.png)
+<img width="1257" height="395" alt="image" src="https://github.com/user-attachments/assets/60cb5be4-8754-4dfe-811b-d23f58679c93" />
+
 
 **Question 5**
 ---
--- Paste Question 5 here
-
-```sql
--- Paste your SQL code below for Question 5
+Create a table named Attendance with the following constraints: AttendanceID as INTEGER should be the primary key. EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID). AttendanceDate as DATE. Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 ```
-
+CREATE TABLE Attendance(
+AttendanceID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+AttendanceDate DATE,
+Status TEXT CHECK (Status IN('Present','Absent','Leave')),
+FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+);
+```
 **Output:**
 
-![Output5](output.png)
+<img width="1262" height="287" alt="image" src="https://github.com/user-attachments/assets/ff023132-280d-4f96-aceb-082ac0c0682d" />
+
 
 **Question 6**
 ---
--- Paste Question 6 here
-
-```sql
--- Paste your SQL code below for Question 6
+Insert a product with ProductID 104, Name Tablet, and Category Electronics into the Products table, where Price and Stock should use default values.
 ```
-
+INSERT INTO Products (ProductID,Name,Category)
+VALUES(104,'Tablet','Electronics');
+```
 **Output:**
 
-![Output6](output.png)
+<img width="1262" height="262" alt="image" src="https://github.com/user-attachments/assets/7d502d44-9d7c-4839-8081-e698eebe2296" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Create a table named Tasks with the following columns:
 
-```sql
--- Paste your SQL code below for Question 7
+TaskID as INTEGER TaskName as TEXT DueDate as DATE
+```
+CREATE TABLE Tasks(
+TaskID INTEGER,
+TaskName TEXT,
+DueDate DATE
+);
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1262" height="382" alt="image" src="https://github.com/user-attachments/assets/ce9f0934-79d0-4d13-82d1-011ce59cc33c" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
-
-```sql
--- Paste your SQL code below for Question 8
+Insert a new product with ProductID 101, Name Laptop, Category Electronics, Price 1500, and Stock 50 into the Products table.
+```
+INSERT INTO Products (ProductID,Name,Category,Price,Stock)
+VALUES(101,'Laptop','Electronics',1500,50);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1257" height="231" alt="image" src="https://github.com/user-attachments/assets/5d07660d-7b89-4ea0-a5b3-5e0a2de5f624" />
+
 
 **Question 9**
----
--- Paste Question 9 here
+Create a table named Shipments with the following constraints: ShipmentID as INTEGER should be the primary key. ShipmentDate as DATE. SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID). OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
+```
+CREATE TABLE Shipments(
+ShipmentID INTEGER PRIMARY KEY,
+ShipmentDate DATE,
+SupplierID INTEGER,
+OrderId INTEGER,
+FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierId),
+FOREIGN KEY (OrderId)REFERENCES Orders(OrderID)
 
-```sql
--- Paste your SQL code below for Question 9
+);
 ```
 
 **Output:**
 
-![Output9](output.png)
+<img width="1257" height="231" alt="image" src="https://github.com/user-attachments/assets/e3d7a8fb-b1b2-459c-a1c0-cc7dd8f43871" />
 
 **Question 10**
----
--- Paste Question 10 here
-
-```sql
--- Paste your SQL code below for Question 10
+Create a table named Bonuses with the following constraints: BonusID as INTEGER should be the primary key. EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID). BonusAmount as REAL should be greater than 0. BonusDate as DATE. Reason as TEXT should not be NULL.
+```
+CREATE TABLE Bonuses(
+BonusID INTEGER PRIMARY KEY,
+EmployeeID INTEGER,
+BonusAmount REAL CHECK (BonusAmount>0),
+BonusDate DATE,
+Reason TEXT NOT NULL,
+FOREIGN KEY (EmployeeID)REFERENCES
+Employees(EmployeeID)
+);
 ```
 
 **Output:**
-
-![Output10](output.png)
+<img width="1277" height="270" alt="image" src="https://github.com/user-attachments/assets/1b0211a7-2af7-4b4b-b9b0-15445c5354ad" />
 
 
 ## RESULT
